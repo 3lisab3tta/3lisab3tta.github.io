@@ -1,0 +1,290 @@
+body {
+    margin: 0;
+    font-family: 'Space Grotesk', sans-serif;
+    color: white;
+    background: linear-gradient(to bottom, #6a0dad, #000);
+    overflow-x: hidden;
+    position: relative;
+    z-index: 0; /* Ensure body is on the base layer */
+}
+
+.star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    width: 2px;
+    height: 2px;
+    box-shadow: 0 0 10px white;
+    animation: twinkle 2s infinite ease-in-out alternate;
+    z-index: 1; /* Ensure stars are above the body but below other content */
+}
+
+.libra-star {
+    width: 6px;
+    height: 6px;
+    background: #ccffcc;
+    box-shadow: 0 0 20px #ccffcc;
+    border-radius: 50%;
+    z-index: 1; /* Ensure Libra stars are also above the body but below other content */
+}
+
+.purple-star {
+    background: #e066ff;
+    box-shadow: 0 0 10px #e066ff;
+    z-index: 1; /* Ensure purple stars are also above the body but below other content */
+}
+
+@keyframes twinkle {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    background: linear-gradient(to bottom, #4b0082, #000);
+    font-family: 'Orbitron', sans-serif;
+    z-index: 2; /* Ensure header is above stars */
+}
+
+header h1 {
+    font-size: 5em;
+    margin: 0;
+    position: relative;
+    z-index: 3; /* Ensure text is above the header background and stars */
+}
+
+header p {
+    font-size: 1.5em;
+    margin: 10px 0 0;
+    position: relative;
+    z-index: 3; /* Ensure text is above the header background and stars */
+}
+
+section h2 {
+    font-size: 3em;
+    font-family: 'Orbitron', sans-serif;
+    text-align: center;
+}
+
+nav {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 10px 0;
+    text-align: center;
+    font-family: 'Orbitron', sans-serif;
+    z-index: 1000;
+}
+
+nav a, nav span {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+    font-size: 1.2em;
+}
+
+nav span {
+    pointer-events: none;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+.card-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.project-card {
+    position: relative;
+    width: 400px;
+    height: 300px;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin: 20px;
+}
+
+.project-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.project-card.escapethemaze-card img {
+    object-position: left;
+}
+
+.project-card:hover img {
+    transform: scale(1.1);
+    filter: brightness(50%);
+}
+
+.project-card .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    color: white;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+.project-card:hover .overlay {
+    opacity: 1;
+}
+
+.overlay h3 {
+    margin: 0;
+    font-weight: bold;
+    color: #FFFFFF;
+}
+
+.overlay p {
+    color: #FFFFFF;
+}
+
+.overlay .small {
+    font-size: 0.9em;
+    margin-top: 0;
+}
+
+.overlay .link {
+    margin-top: 10px;
+}
+
+/* Consistent link color */
+.project-card .overlay a,
+.cv-link,
+.contact-links a {
+    color: #E8CDFF;
+    text-decoration: none;
+}
+
+.project-card .overlay a:hover,
+.cv-link:hover,
+.contact-links a:hover {
+    text-decoration: underline;
+}
+
+.about-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+    padding: 20px;
+    background: #4b0082;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    gap: 20px;
+}
+
+.about-container img {
+    border-radius: 10px;
+    width: 350px;
+    height: auto;
+    object-fit: cover;
+}
+
+.about-text {
+    max-width: 600px;
+    font-family: 'Space Grotesk', sans-serif;
+    color: #E8CDFF;
+    font-size: 1.2em;
+}
+
+.about-text h3 {
+    margin: 0;
+    font-weight: normal;
+}
+
+.about-text p {
+    margin: 10px 0;
+}
+
+.skills-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    background: #8A2BE2;
+    border-radius: 10px;
+    font-family: 'Space Grotesk', sans-serif;
+    color: #E8CDFF;
+    font-size: 1.5em;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.skills-container div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.skills-container p {
+    margin: 10px 0;
+}
+
+.cv-link {
+    color: #E8CDFF;
+    text-decoration: none;
+    font-size: 1.5em; /* Increased font size */
+}
+
+.cv-link:hover {
+    text-decoration: underline;
+}
+
+section#projects,
+section#skills,
+section#cv,
+section#contact {
+    background: #8A2BE2;
+    padding: 40px 0;
+    text-align: center;
+    font-family: 'Space Grotesk', sans-serif;
+    color: #E8CDFF;
+}
+
+.contact-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.contact-links p {
+    font-size: 1.5em;
+}
+
+.contact-links img {
+    width: 24px;
+    height: 24px;
+    margin-left: 10px;
+    vertical-align: middle;
+}
