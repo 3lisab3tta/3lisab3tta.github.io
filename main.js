@@ -47,3 +47,5 @@ libraStars.forEach(position => {
     star.style.animationDelay = `${Math.random() * 2}s`;
     document.body.appendChild(star);
 });
+
+

@@ -8,6 +8,12 @@ body {
     z-index: 0; /* Ensure body is on the base layer */
 }
 
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
 .star {
     position: absolute;
     background: white;
@@ -56,21 +62,21 @@ header {
 }
 
 header h1 {
-    font-size: 5em;
+    font-size: clamp(2.1rem, 8vw, 5rem);
     margin: 0;
     position: relative;
     z-index: 3; /* Ensure text is above the header background and stars */
 }
 
 header p {
-    font-size: 1.5em;
+    font-size: clamp(1rem, 3.5vw, 1.5rem);
     margin: 10px 0 0;
     position: relative;
     z-index: 3; /* Ensure text is above the header background and stars */
 }
 
 section h2 {
-    font-size: 3em;
+    font-size: clamp(1.8rem, 6vw, 3rem);
     font-family: 'Orbitron', sans-serif;
     text-align: center;
 }
@@ -90,7 +96,7 @@ nav a, nav span {
     color: white;
     margin: 0 10px;
     text-decoration: none;
-    font-size: 1.2em;
+    font-size: 1.1rem;
 }
 
 nav span {
@@ -111,12 +117,12 @@ nav a:hover {
 
 .project-card {
     position: relative;
-    width: 400px;
+    width: min(400px, 100%);
     height: 300px;
     overflow: hidden;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    margin: 20px;
+    margin: 20px 0;
 }
 
 .project-card img {
@@ -128,6 +134,10 @@ nav a:hover {
 
 .project-card.escapethemaze-card img {
     object-position: left;
+}
+
+.project-card.scarletcity-card img {
+    object-position: center 75%;
 }
 
 .project-card:hover img {
@@ -199,6 +209,8 @@ nav a:hover {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     gap: 20px;
+    max-width: 1080px;
+    margin: 0 auto;
 }
 
 .about-container img {
@@ -226,27 +238,44 @@ nav a:hover {
 
 .skills-container {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    text-align: center;
+    justify-content: center;
+    align-items: stretch;
+    text-align: left;
     padding: 20px;
     background: #8A2BE2;
     border-radius: 10px;
     font-family: 'Space Grotesk', sans-serif;
     color: #E8CDFF;
-    font-size: 1.5em;
-    max-width: 800px;
+    width: min(1240px, 100%);
     margin: 0 auto;
+    gap: 24px;
+    flex-wrap: wrap;
 }
 
 .skills-container div {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
 }
 
 .skills-container p {
-    margin: 10px 0;
+    margin: 6px 0;
+    font-size: clamp(1.05rem, 2.2vw, 1.6rem);
+}
+
+.skills-group {
+    background: rgba(0, 0, 0, 0.22);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+    padding: 14px;
+    min-width: 180px;
+    flex: 1 1 220px;
+}
+
+.skills-group h3 {
+    margin: 0 0 8px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(1rem, 2.1vw, 1.45rem);
+    color: #E8CDFF;
 }
 
 .cv-link {
@@ -264,11 +293,20 @@ section#skills,
 section#cv,
 section#contact {
     background: #8A2BE2;
-    padding: 40px 0;
+    padding: 40px 20px;
     text-align: center;
     font-family: 'Space Grotesk', sans-serif;
     color: #E8CDFF;
 }
+
+
+
+
+
+
+
+
+
 
 .contact-links {
     display: flex;
@@ -288,3 +326,89 @@ section#contact {
     margin-left: 10px;
     vertical-align: middle;
 }
+
+@media (max-width: 900px) {
+    header {
+        min-height: 80vh;
+        padding: 0 16px;
+    }
+
+    nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px 0;
+        padding: 10px 12px;
+    }
+
+    nav a,
+    nav span {
+        margin: 0 6px;
+    }
+
+    .about-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .about-container img {
+        width: min(320px, 100%);
+    }
+
+    .about-text {
+        font-size: 1rem;
+    }
+
+    .skills-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 14px;
+    }
+
+    .skills-group {
+        width: 100%;
+    }
+}
+
+@media (max-width: 640px) {
+    header {
+        min-height: 70vh;
+    }
+
+    nav span {
+        display: none;
+    }
+
+    .card-container {
+        gap: 12px;
+    }
+
+    .project-card {
+        height: 260px;
+    }
+
+    /* Hover overlays are not reliable on touch screens, so keep content readable by default. */
+    .project-card img {
+        filter: brightness(45%);
+    }
+
+    .project-card .overlay {
+        opacity: 1;
+        padding: 12px;
+    }
+
+    .project-card:hover img {
+        transform: none;
+        filter: brightness(45%);
+    }
+
+    .cv-link {
+        font-size: 1.25rem;
+    }
+
+    .contact-links p {
+        font-size: 1.2rem;
+        margin: 8px 0;
+    }
+}
+
